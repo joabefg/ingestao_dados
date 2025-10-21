@@ -1,0 +1,9 @@
+POST alunos/_doc/1?pretty
+{
+  "id": "1",
+  "nome": "Raysa Vale",
+  "matricula": 1234,
+  "curso": "Ciencias de dados"
+}
+
+GET alunos/_doc/1
