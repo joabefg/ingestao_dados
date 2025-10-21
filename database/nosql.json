@@ -1,0 +1,12 @@
+# cadastrar aluno
+
+POST alunos/_doc/1?pretty
+{
+  "id": "1",
+  "nome": "Cristiana Faustino",
+  "matricula": 1234,
+  "curso": "ciencia de dados"
+}
+
+# obter aluno
+GET alunos/_doc/1
