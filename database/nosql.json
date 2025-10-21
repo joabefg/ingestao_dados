@@ -1,0 +1,11 @@
+# cadrastar aluno
+POST alunos/doc/1?pretty
+{
+  "id": "1", 
+  "nome": "Guilherme",
+  "matricula": 1234,
+  "curso": "ciencia de dados"
+}
+
+# obter aluno
+GET alunos/_doc/1

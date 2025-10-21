@@ -1,0 +1,38 @@
+services:
+  # 1. Banco de Dados Relacional - SQL
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: db_relacional
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: always
+  # 2. Banco de dados NoSQL - docuental
+  elasticsearch:
+    image: elasticsearch:7.17.3
+    environment:
+      discovery.type: "single-node"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    restart: always
+  # 2.1 Visualização de Elasticsearch
+  kibana:
+    image: kibana:7.17.3
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on: 
+      - elasticsearch
+    restart: always
+
+volumes:
+  mysql_data:
+  es_data:
